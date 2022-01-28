@@ -5,28 +5,22 @@
     <title>Title</title>
     <script>
         // внутрь Promise передаем колбэк-функцию, которая собственно и есть та логика, которую промис обещает выполнить.
-        let myPromise = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                   const randValue = Math.random()
-                    resolve(randValue)
-                }, 2000
-            )
-            console.log(1)
-            console.log(2)
-            console.log(3)
-        });
+        const doAfter = (seconds) => {
+            let myPromise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                        const randValue = Math.random()
+                        resolve(randValue)
+                    }, seconds*1000)
+            })
+            return myPromise
+        }
 
-        console.log(myPromise)
+
 
         // ниже по коду мы можем подписаться, на промис, чтобы он (промис) вызвал нашу функцию, когда он (промис) зарезолвится. Для этого передаём в метод then колбэк-функцию)
-        myPromise.then((response) => {
-            console.log("111: " + response);
-            console.log(response)
-        })
-        myPromise.then((response) => {
-            console.log("222: " + response);
-            console.log(response)
-        })
+        doAfter(5).then( () => console.log('я сработал через 5 секунд') );
+        doAfter(3).then( () => console.log('а я сработал через 3 секунд') );
+        doAfter(10).then( () => console.log('я сработал через 10 секунд') );
 
 
     </script>
