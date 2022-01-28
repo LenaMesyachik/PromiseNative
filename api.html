@@ -6,7 +6,9 @@
     <script >
         // внутрь Promise передаем колбэк-функцию, которая собственно и есть та логика, которую промис обещает выполнить.
         let myPromise = new Promise((resolve, reject) => {
-            resolve()
+            setTimeout(()=>{
+                console.log('hi')
+                resolve(),2000})
             console.log(1)
             console.log(2)
             console.log(3)
