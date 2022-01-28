@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script >
+        // внутрь Promise передаем колбэк-функцию, которая собственно и есть та логика, которую промис обещает выполнить.
+        let myPromise = new Promise((resolve, reject) => {
+            resolve()
+            console.log(1)
+            console.log(2)
+            console.log(3)
+
+        });
+
+
+        // ниже по коду мы можем подписаться, на промис, чтобы он (промис) вызвал нашу функцию, когда он (промис) зарезолвится. Для этого передаём в метод then колбэк-функцию)
+        myPromise.then(( ) => {
+            console.log("myPromise зарезолвился, и я узнал об этом");
+        })
+
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
