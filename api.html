@@ -20,7 +20,11 @@
 
         // ниже по коду мы можем подписаться, на промис, чтобы он (промис) вызвал нашу функцию, когда он (промис) зарезолвится. Для этого передаём в метод then колбэк-функцию)
         myPromise.then((response) => {
-            console.log("myPromise зарезолвился, и я узнал об этом");
+            console.log("111: " + response);
+            console.log(response)
+        })
+        myPromise.then((response) => {
+            console.log("222: " + response);
             console.log(response)
         })
 
