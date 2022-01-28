@@ -13,7 +13,7 @@
         doAfter(10).then( () => console.log('я сработал через 10 секунд') );*/
 
         let promise3 = doAfter(3);
-        promise3.then( () => console.log('я сработал через 3 секунд') );
+        promise3.catch( () => console.log('я сработал через 3 секунд') );
         promise3.then( () => console.log('и я тоже следом сработал через 3 секунд') );
         promise3.then( () => console.log('и я') );
     </script>
