@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="doAfter.js"></script>
+    <script src='api.js'></script>
+    <script src="axios.js"></script>
     <script>
 
 
@@ -12,10 +14,24 @@
         doAfter(3).then( () => console.log('а я сработал через 3 секунд') );
         doAfter(10).then( () => console.log('я сработал через 10 секунд') );*/
 
-        let promise3 = doAfter(3);
-        promise3.catch( () => console.log('я сработал через 3 секунд') );
-        promise3.then( () => console.log('и я тоже следом сработал через 3 секунд') );
-        promise3.then( () => console.log('и я') );
+      /*  let promise1 = doAfter(1);
+        let promise2 = promise1.then( () => {
+            console.log('resolved')
+        })*/
+        api.sendStudentsCountToItKamasutra(20)
+        .then(response => {
+            console.log(response.data)
+        })
+        api.getVacanciesCountFromMicrosoft()
+        .then(response => {
+            console.log(response.data)
+        })
+        api.getVacanciesCountFromGoogle()
+        .then(response => {
+            console.log(response.data)
+        })
+
+
     </script>
 
 </head>
