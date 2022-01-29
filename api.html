@@ -14,22 +14,26 @@
         doAfter(3).then( () => console.log('а я сработал через 3 секунд') );
         doAfter(10).then( () => console.log('я сработал через 10 секунд') );*/
 
-      /*  let promise1 = doAfter(1);
-        let promise2 = promise1.then( () => {
-            console.log('resolved')
-        })*/
-        api.sendStudentsCountToItKamasutra(20)
-        .then(response => {
-            console.log(response.data)
-        })
-        api.getVacanciesCountFromMicrosoft()
-        .then(response => {
-            console.log(response.data)
-        })
-        api.getVacanciesCountFromGoogle()
-        .then(response => {
-            console.log(response.data)
-        })
+        /*  let promise1 = doAfter(1);
+          let promise2 = promise1.then( () => {
+              console.log('resolved')
+          })*/
+        let msPromise = api.getVacanciesCountFromMicrosoft()
+
+        let gPromise = api.getVacanciesCountFromGoogle()
+
+        const allPromise = Promise.all([msPromise, gPromise])
+        allPromise.then(
+            (response) => {
+                let resMS = response[0].data.vacancies
+                let resG = response[1].data.vacancies
+                console.log(response)
+                api.sendStudentsCountToItKamasutra(resMS + resG)
+                    .then(response => {
+                        console.log(response.data)
+                    })
+            }
+        )
 
 
     </script>
